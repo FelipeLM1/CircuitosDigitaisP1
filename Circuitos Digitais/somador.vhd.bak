@@ -12,7 +12,7 @@ end somador;
 architecture soma of somador is 
 		begin
 			
-			s 	  <=  a xor b xor cin;
+			s 	  <= a xor b xor cin;
 			cout <= (a and b) or (a and cin) or (b and cin);
 			
 		end soma;

@@ -26,7 +26,7 @@ end soma4b;
 			
 		end component;
 		
-		signal v : std_logic_vector(3 down to 1); -- vai um
+		signal v : std_logic_vector(3 downto 1); -- vai um
 		
 		
 begin
