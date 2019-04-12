@@ -1,0 +1,20 @@
+LIBRARY IEEE ;
+USE IEEE.std_logic_1164.all ;
+
+entity inversor1b is 
+	port(
+	
+		x1   :  in std_logic;
+		x2	  : out std_logic
+	);
+end inversor1b;
+	
+architecture inverte of inversor1b is 
+		begin
+			
+			x2 <= not x1 ;
+			
+		end inversor1b;
+	
+	
+	

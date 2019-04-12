@@ -1,0 +1,5 @@
+-- SUBTRATOR
+-- 
+--	PEGA OS VALORES INVERTE E SOMA. 
+--
+
