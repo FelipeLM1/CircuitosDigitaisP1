@@ -5,16 +5,18 @@ entity Minicalc is
 
 	port(
 		
-		x1,x2	: 	in std_logic_vector (3 downto 0);
-		liga 	:	in std_logic;   		
-		sel  	:	in std_logic_vector (2 downto 0);   -- seleçao de operaçao
-      sub  	:	in std_logic;
-		maior	:	in std_logic;
-		menor	:	in std_logic;
-	inversao	:	in std_logic; 	
-	 display	:  out std_logic_vector (6 downto 0);
-		c0	  	:  out std_logic;  							-- tratamento de erro
-		led  	:  out std_logic
+	x1,x2		:   in std_logic_vector (3 downto 0);
+	 liga 	:	 in std_logic;   		
+	  sel  	:	 in std_logic_vector (2 downto 0);   -- seleçao de operaçao
+cin,cout		:	 in std_logic;	 	 
+		c0	  	:  out std_logic;  								-- tratamento de erro
+	  led  	:  out std_logic;
+		bg		:	out std_logic; 								-- menor que
+		ag		:	out std_logic;
+coutsoma		: 	out std_logic;
+	display	:  out std_logic_vector (6 downto 0);
+ssoma,ssub	:	out std_logic_vector (3 downto 0);
+ sinversor	:	out std_logic_vector (3 downto 0)
 	
 	);
 
@@ -44,14 +46,22 @@ architecture archMinicalc of Minicalc is
 			);
 	end component;
 	
-	component comparador
+	component maior4b
 		
 			port(
 			
 				a, b 		  : in  std_logic_vector(3 downto 0);       
-				ag, bg, eq : out std_logic  
+				ag			  : out std_logic  
 			
 			);
+	end component;
+	
+	component menor4b
+	 
+		 port (
+		 a,b			: in  std_logic_vector(3 downto 0);    
+		 bg			: out std_logic);  
+
 	end component;
 	
 	component inversor1b
@@ -64,19 +74,34 @@ architecture archMinicalc of Minicalc is
 			);
 	end component;
 	
-	soma4b 	  port map(x1,x2,cin,ssoma,coutsoma);
-	sub4b  	  port map(x1,x2,ssub);
-	maior 	  port map()
-	menor		  port map()
-	inversor1b port map(x1,sinversor);
+	component display
+	
+			port
+			(
+			-- Sinais de entrada
+			DADO : in  STD_LOGIC_VECTOR(3 DOWNTO 0);
+			
+			-- Sinais de saida
+			A, B, C, D, E, F, G : out STD_LOGIC
+			);
+			
+	end component;
 		
 	begin
+	
+		a1:soma4b 	  port map	(x1,x2,cin,ssoma,coutsoma);
+		a2:sub4b  	  port map	(x1,x2,ssub);
+		a3:maior4b 	  port map	(x1,x2,ag);
+		a4:menor4b	  port map	(x1,x2,bg);
+		a5:inversor1b port map	(x1,sinversor);
 		
 			with sel select
-			display	<=  soma when  ("001" and liga); -- saidas do portmap
-							  sub when 	("011" and liga);
-							maior when	("010" and liga);
-							menor when	("110" and liga);
-						inversao when  ("111" and liga);
+					display	<=  ssoma 		when  ("001"); -- saidas do portmap
+					led		<=  coutsoma	when  ("001");
+					display	<=  ssub 		when 	("011");
+					led 		<=	 e				when	("011");
+					display	<=  ag			when	("010");
+					display	<=  bg 			when	("110");
+					display	<=  sinversao 	when  ("111");
 									
 	end archMinicalc;
