@@ -40,11 +40,18 @@ end sub4b;
 				b	:	out std_logic_vector(3 downto 0)
 				
 			);
+		component maior
 		
-		
+			port (
+				
+				a, b 		: in  std_logic_vector(3 downto 0);       -- inputs
+				ag			: out std_logic);     	
+				
+		end component;
+			
 	begin
 	
-		p: comparador port map (x1,x2,a); -- A Signal  -- separar o maior que e menor que
+		p: maior port map (x1,x2,a); -- A Signal  -- separar o maior que e menor que
 		-- verificar se x1 < x2 para poder subtrair
 		w: inversor1b port map (x2,y2);
 		-- inverter o segundo numero

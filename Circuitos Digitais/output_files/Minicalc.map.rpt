@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Minicalc
-Sun Apr 14 15:41:54 2019
+Mon Apr 15 21:23:21 2019
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Sun Apr 14 15:41:54 2019          ;
+; Analysis & Synthesis Status        ; Failed - Mon Apr 15 21:23:21 2019          ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; Minicalc                                   ;
 ; Top-level Entity Name              ; Minicalc                                   ;
@@ -157,7 +157,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Sun Apr 14 15:41:53 2019
+    Info: Processing started: Mon Apr 15 21:23:20 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Minicalc -c Minicalc
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file minicalc.vhd
@@ -181,10 +181,10 @@ Info (12021): Found 2 design units, including 1 entities, in source file menor4b
 Info (12021): Found 2 design units, including 1 entities, in source file display.vhd
     Info (12022): Found design unit 1: display-decodificador
     Info (12023): Found entity 1: display
-Error (10309): VHDL Interface Declaration error in Minicalc.vhd(86): interface object "ssoma" of mode out cannot be read. Change object mode to buffer. File: C:/Users/Programação/Desktop/Circuitos Digitais/Minicalc.vhd Line: 86
+Error (10476): VHDL error at Minicalc.vhd(104): type of identifier "q1" does not agree with its usage as "std_logic_vector" type File: C:/Users/Programação/Desktop/Circuitos Digitais/Minicalc.vhd Line: 104
 Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 1 error, 4 warnings
     Error: Peak virtual memory: 497 megabytes
-    Error: Processing ended: Sun Apr 14 15:41:54 2019
+    Error: Processing ended: Mon Apr 15 21:23:21 2019
     Error: Elapsed time: 00:00:01
     Error: Total CPU time (on all processors): 00:00:01
 
