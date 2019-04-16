@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Minicalc
-Tue Apr 16 16:50:55 2019
+Tue Apr 16 17:24:11 2019
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                          ;
 +------------------------------------+--------------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Tue Apr 16 16:50:55 2019                ;
+; Analysis & Synthesis Status        ; Failed - Tue Apr 16 17:24:11 2019                ;
 ; Quartus II 32-bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version ;
 ; Revision Name                      ; Minicalc                                         ;
 ; Top-level Entity Name              ; Minicalc                                         ;
@@ -163,7 +163,7 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
-    Info: Processing started: Tue Apr 16 16:50:54 2019
+    Info: Processing started: Tue Apr 16 17:24:08 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Minicalc -c Minicalc
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file minicalc.vhd
@@ -175,27 +175,24 @@ Info (12021): Found 2 design units, including 1 entities, in source file somador
 Info (12021): Found 2 design units, including 1 entities, in source file soma4b.vhd
     Info (12022): Found design unit 1: soma4b-s4b
     Info (12023): Found entity 1: soma4b
-Info (12021): Found 2 design units, including 1 entities, in source file sub.vhd
-    Info (12022): Found design unit 1: sub4b-subtrator4b
-    Info (12023): Found entity 1: sub4b
+Warning (12019): Can't analyze file -- file sub.vhd is missing
 Info (12021): Found 2 design units, including 1 entities, in source file inversor1b.vhd
     Info (12022): Found design unit 1: inversor1b-inverte
     Info (12023): Found entity 1: inversor1b
 Warning (12019): Can't analyze file -- file inversor4b.vhd is missing
-Info (12021): Found 2 design units, including 1 entities, in source file comparador.vhd
-    Info (12022): Found design unit 1: maior4b-maior
-    Info (12023): Found entity 1: maior4b
+Warning (12019): Can't analyze file -- file comparador.vhd is missing
 Info (12021): Found 2 design units, including 1 entities, in source file menor4b.vhd
     Info (12022): Found design unit 1: menor4b-menor
     Info (12023): Found entity 1: menor4b
 Info (12021): Found 2 design units, including 1 entities, in source file display.vhd
     Info (12022): Found design unit 1: display-decodificador
     Info (12023): Found entity 1: display
-Error (10316): VHDL error at Minicalc.vhd(110): character ''0'' used but not declared for type "std_logic_vector" File: C:/Users/geren/Desktop/Circuitos Digitais/Minicalc.vhd Line: 110
-Error: Quartus II 32-bit Analysis & Synthesis was unsuccessful. 1 error, 1 warning
+Error (10482): VHDL error at Minicalc.vhd(115): object "e" is used but not declared File: C:/Users/geren/Desktop/Circuitos Digitais/Minicalc.vhd Line: 115
+Error (10515): VHDL type mismatch error at Minicalc.vhd(118): std_logic type does not match string literal File: C:/Users/geren/Desktop/Circuitos Digitais/Minicalc.vhd Line: 118
+Error: Quartus II 32-bit Analysis & Synthesis was unsuccessful. 2 errors, 3 warnings
     Error: Peak virtual memory: 391 megabytes
-    Error: Processing ended: Tue Apr 16 16:50:55 2019
-    Error: Elapsed time: 00:00:01
-    Error: Total CPU time (on all processors): 00:00:01
+    Error: Processing ended: Tue Apr 16 17:24:11 2019
+    Error: Elapsed time: 00:00:03
+    Error: Total CPU time (on all processors): 00:00:02
 
 

@@ -10,7 +10,7 @@ entity display is
 		DADO : in  STD_LOGIC_VECTOR(3 DOWNTO 0);
 		
 		-- Sinais de saida
-		A, B, C, D, E, F, G : out STD_LOGIC
+		A : out STD_LOGIC_VECTOR(6 DOWNTO 0)
 	);
 end display;
 
@@ -38,12 +38,12 @@ begin
 			"0111000"  when "1111",	-- 'F'
 			"1111111"  when others; 
 			
-    A <= S(0);
-    B <= S(1);
-    C <= S(2);
-    D <= S(3);
-    E <= S(4);
-    F <= S(5);
-    G <= S(6);
+    A(0) <= S(0);
+    A(1) <= S(1);
+    A(2) <= S(2);
+    A(3) <= S(3);
+    A(4) <= S(4);
+    A(5) <= S(5);
+    A(6) <= S(6);
 	 
 end decodificador;

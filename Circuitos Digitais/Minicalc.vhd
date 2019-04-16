@@ -9,7 +9,7 @@ entity Minicalc is
 	   liga 	:	 in std_logic;   		
 	    sel  :	 in std_logic_vector (2 downto 0);   -- seleçao de operaçao
   cin,cout	:	 in std_logic;	 	 
-		  c0	:  out std_logic;  								-- tratamento de erro
+		 led	:  out std_logic;  								-- tratamento de erro
 	   disp	:  out std_logic_vector (6 downto 0)
 		
 	);
@@ -78,16 +78,16 @@ architecture archMinicalc of Minicalc is
 				DADO : in  STD_LOGIC_VECTOR(3 DOWNTO 0);
 				
 				-- Sinais de saida
-				A, B, C, D, E, F, G : out STD_LOGIC
+				A: out  STD_LOGIC_VECTOR(6 DOWNTO 0)
 			);
 			
 	end component;
 		
-		signal ssoma,ssub,sinversor		: 	std_logic_vector(3 downto 0);
-		signal coutsoma						: 	std_logic;
-		signal A,B,C,D,E,F,G,ag,bg,led	:	std_logic;
-		signal A1,B1,C1,D1,E1,F1,G1		:	std_logic;
-		signal A2,B2,C2,D2,E2,F2,G2		:	std_logic;
+		signal coutsoma,ag,bg				: 	std_logic;
+		signal ssoma,ssub,sinversor		: 	std_logic_vector (3 downto 0);
+		signal A									:	std_logic_vector (6 downto 0);
+		signal B									:	std_logic_vector (6 downto 0);
+		signal C									:	std_logic_vector (6 downto 0);
 		
 	begin
 		
@@ -97,9 +97,9 @@ architecture archMinicalc of Minicalc is
 		q4:menor4b	  port map	(x1,x2,bg);
 		q5:inversor1b port map	(x1,sinversor);
 		
-		r1:display 	  port map	(ssoma,A,B,C,D,E,F,G);
-		r2:display 	  port map	(ssub,A1,B1,C1,D1,E1,F1,G1);
-		r3:display 	  port map	(sinversor,A2,B2,C2,D2,E2,F2,G2);
+		r1:display 	  port map	(ssoma,A);
+		r2:display 	  port map	(ssub,B);
+		r3:display 	  port map	(sinversor,C);
 		
 		
 			with sel select
@@ -107,7 +107,7 @@ architecture archMinicalc of Minicalc is
 					disp		<= ssoma 	 			when  ("001"), -- saidas do portmap
 									ssub					when 	("011"),
 									sinversor			when	("010"),
-									'0' when others;
+									"0000000" 			when others;
 			
 			with sel select	
 			
@@ -115,7 +115,7 @@ architecture archMinicalc of Minicalc is
 									 e						when	("011"),
 									 ag					when	("110"),
 									 bg					when	("111"),
-									 '0' when others;
+									 "0000000" 			when others;
 									
 	end archMinicalc;
 	
