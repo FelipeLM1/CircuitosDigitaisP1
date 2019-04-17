@@ -6,12 +6,12 @@ entity Minicalc is
 	port(
 		
 	  x1,x2	:   in std_logic_vector (3 downto 0);
-	   liga 	:	 in std_logic;   		
+	   	
 	    sel  :	 in std_logic_vector (2 downto 0);   -- seleçao de operaçao
- cin,cout,e	:	 in std_logic;	 	 
-		 led	:  out std_logic;  								-- tratamento de erro
-	   disp	:  out std_logic_vector (6 downto 0)
-		
+ cin,e	:	 in std_logic ;
+		disp	:  out std_logic_vector (6 downto 0) ;
+		led	: 	out std_logic
+															
 	);
 
 end Minicalc;
@@ -85,10 +85,9 @@ architecture archMinicalc of Minicalc is
 		
 		signal coutsoma,ag,bg				: 	std_logic;
 		signal ssoma,ssub,sinversor		: 	std_logic_vector (3 downto 0);
-		signal A									:	std_logic_vector (6 downto 0);
-		signal B									:	std_logic_vector (6 downto 0);
-		signal C									:	std_logic_vector (6 downto 0);
-		
+		signal saidahex						:	std_logic_vector (6 downto 0);
+		signal saida4b							:  std_logic_vector (3 downto 0);
+		 	
 	begin
 		
 		soma:			soma4b 	  	port map	(x1,x2,cin,ssoma,coutsoma);
@@ -96,18 +95,13 @@ architecture archMinicalc of Minicalc is
 		maior:		maior4b 	  	port map	(x1,x2,ag);
 		menor:		menor4b	  	port map	(x1,x2,bg);
 		inverte:		inversor1b 	port map	(x1,sinversor);
-		
-		q6:display 	  				port map	(ssoma,A);
-		q7:display 	  				port map	(ssub,B);
-		q8:display 	  				port map	(sinversor,C);
-		
-		
+			
 			with sel select
 						
-					disp		<= A 	 				when  ("001"), -- saidas do portmap
-									B					when 	("011"),
-									C					when	("010"),
-									"0000000" 		when others;
+					saida4b		<= ssoma 	 		when  ("001"), -- saidas do portmap
+										ssub				when 	("011"),
+										sinversor		when	("010"),
+										"0000" 			when others;
 			
 			with sel select	
 			
@@ -116,6 +110,12 @@ architecture archMinicalc of Minicalc is
 									 ag					when	("110"),
 									 bg					when	("111"),
 									 '0' 					when others;
+									 
+		D:display port map(saida4b,saidahex);
+		
+		disp <= saidahex;
+					 
+					
 									
 	end archMinicalc;
 	
