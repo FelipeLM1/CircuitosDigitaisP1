@@ -8,7 +8,7 @@ entity Minicalc is
 	  x1,x2	:   in std_logic_vector (3 downto 0);
 	   liga 	:	 in std_logic;   		
 	    sel  :	 in std_logic_vector (2 downto 0);   -- seleçao de operaçao
-  cin,cout	:	 in std_logic;	 	 
+ cin,cout,e	:	 in std_logic;	 	 
 		 led	:  out std_logic;  								-- tratamento de erro
 	   disp	:  out std_logic_vector (6 downto 0)
 		
@@ -64,8 +64,8 @@ architecture archMinicalc of Minicalc is
 		
 			port(
 				
-				x1   :  in std_logic_vector(3 downto 0);
-				y1	  : out std_logic_vector(3 downto 0)
+				x1   			  :  in std_logic_vector(3 downto 0);
+				sinversor	  : out std_logic_vector(3 downto 0)
 			
 			);
 	end component;
@@ -91,23 +91,23 @@ architecture archMinicalc of Minicalc is
 		
 	begin
 		
-		q1:soma4b 	  port map	(x1,x2,cin,ssoma,coutsoma);
-		q2:sub4b  	  port map	(x1,x2,ssub);
-		q3:maior4b 	  port map	(x1,x2,ag);
-		q4:menor4b	  port map	(x1,x2,bg);
-		q5:inversor1b port map	(x1,sinversor);
+		soma:			soma4b 	  	port map	(x1,x2,cin,ssoma,coutsoma);
+		sub:			sub4b  	  	port map	(x1,x2,ssub);
+		maior:		maior4b 	  	port map	(x1,x2,ag);
+		menor:		menor4b	  	port map	(x1,x2,bg);
+		inverte:		inversor1b 	port map	(x1,sinversor);
 		
-		r1:display 	  port map	(ssoma,A);
-		r2:display 	  port map	(ssub,B);
-		r3:display 	  port map	(sinversor,C);
+		q6:display 	  				port map	(ssoma,A);
+		q7:display 	  				port map	(ssub,B);
+		q8:display 	  				port map	(sinversor,C);
 		
 		
 			with sel select
 						
-					disp		<= ssoma 	 			when  ("001"), -- saidas do portmap
-									ssub					when 	("011"),
-									sinversor			when	("010"),
-									"0000000" 			when others;
+					disp		<= A 	 				when  ("001"), -- saidas do portmap
+									B					when 	("011"),
+									C					when	("010"),
+									"0000000" 		when others;
 			
 			with sel select	
 			
@@ -115,7 +115,7 @@ architecture archMinicalc of Minicalc is
 									 e						when	("011"),
 									 ag					when	("110"),
 									 bg					when	("111"),
-									 "0000000" 			when others;
+									 '0' 					when others;
 									
 	end archMinicalc;
 	

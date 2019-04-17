@@ -20,7 +20,6 @@ s(1)<= a(1) xnor b(1);
 s(2)<= a(2) xnor b(2);
 s(3)<= a(3) xnor b(3);
 
-eq<=s(3) and s(2) and s(1) and s(0);
 
 ag<=(a(3) and (not b(3))) or
     (s(3) and a(2) and (not b(2))) or
